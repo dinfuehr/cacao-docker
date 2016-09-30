@@ -8,13 +8,8 @@ RUN apt-get update \
 RUN mkdir -p /code/tools
 WORKDIR /code
 
-RUN mkdir build \
-    && cd build \
-    && ../cacao-staging/configure --enable-disassembler \
-    && make \
-    && make check
-
-RUN hg clone http://icedtea.classpath.org/hg/release/icedtea7-2.6/ \
+RUN cd tools \
+    && hg clone http://icedtea.classpath.org/hg/release/icedtea7-2.6/ \
     && hg update -r icedtea-2.6.4
 
 RUN cd tools \
